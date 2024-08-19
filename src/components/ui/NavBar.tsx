@@ -13,36 +13,68 @@ import {
   Avatar,
 } from "@nextui-org/react";
 
+import { IoHomeOutline } from "react-icons/io5";
+import { FaUserGroup } from "react-icons/fa6";
+import { FaInfoCircle } from "react-icons/fa";
+import { TbCircleDashedPlus } from "react-icons/tb";
+import { HiOutlineUserGroup } from "react-icons/hi";
+import { IoNotificationsOutline } from "react-icons/io5";
+import { BiMessageRoundedDots } from "react-icons/bi";
+
 export default function App() {
   return (
     <Navbar isBordered shouldHideOnScroll>
-      <NavbarContent justify="start">
-        <NavbarBrand className="mr-4">
-          <Link href={"/"}>
-            <h1 className="text-2xl font-bold">Social</h1>
+      <NavbarBrand>
+        <Link href={"/"}>
+          <h1 className="text-2xl font-bold">Social</h1>
+        </Link>
+      </NavbarBrand>
+
+      <NavbarContent justify="center" className="hidden sm:flex gap-4">
+        <NavbarItem>
+          <Link href="#" className="linkText">
+            <div className="flex items-center gap-1">
+              <IoHomeOutline />
+              <h2>Home</h2>
+            </div>
           </Link>
-        </NavbarBrand>
-        <NavbarContent className="hidden sm:flex gap-3">
-          <NavbarItem>
-            <Link href="#" className="linkText">
-              Home
-            </Link>
-          </NavbarItem>
-          <NavbarItem>
-            <Link href="#" className="linkText">
-              Friends
-            </Link>
-          </NavbarItem>
-          <NavbarItem>
-            <Link href="#" className="linkText">
-              Story
-            </Link>
-          </NavbarItem>
-        </NavbarContent>
+        </NavbarItem>
+        <NavbarItem>
+          <Link href="#" className="linkText">
+            <div className="flex items-center gap-1">
+              <FaUserGroup />
+              <h2>Friends</h2>
+            </div>
+          </Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Link href="#" className="linkText">
+            <div className="flex items-center gap-1">
+              <TbCircleDashedPlus />
+              <h2>Story</h2>
+            </div>
+          </Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Link href="#" className="linkText">
+            <div className="flex items-center gap-1">
+              <FaInfoCircle />
+              <h2>About</h2>
+            </div>
+          </Link>
+        </NavbarItem>
       </NavbarContent>
 
       <NavbarContent as="div" className="items-center" justify="end">
-        <NavbarItem></NavbarItem>
+        <NavbarItem>
+          <HiOutlineUserGroup />
+        </NavbarItem>
+        <NavbarItem>
+          <BiMessageRoundedDots />
+        </NavbarItem>
+        <NavbarItem>
+          <IoNotificationsOutline />
+        </NavbarItem>
         <Avatar
           isBordered
           as="button"
