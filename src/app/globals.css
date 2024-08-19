@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.linkText {
+  @apply text-xl font-sans font-semibold;
+}
