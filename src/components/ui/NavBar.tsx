@@ -13,9 +13,9 @@ import {
   Avatar,
 } from "@nextui-org/react";
 
-import { IoHomeOutline } from "react-icons/io5";
-import { FaUserGroup } from "react-icons/fa6";
-import { FaInfoCircle } from "react-icons/fa";
+import { GoHome } from "react-icons/go";
+import { LuUsers2 } from "react-icons/lu";
+import { IoIosInformationCircleOutline } from "react-icons/io";
 import { TbCircleDashedPlus } from "react-icons/tb";
 import { HiOutlineUserGroup } from "react-icons/hi";
 import { IoNotificationsOutline } from "react-icons/io5";
@@ -34,7 +34,7 @@ export default function App() {
         <NavbarItem>
           <Link href="#" className="linkText">
             <div className="flex items-center gap-1">
-              <IoHomeOutline />
+              <GoHome />
               <h2>Home</h2>
             </div>
           </Link>
@@ -42,7 +42,7 @@ export default function App() {
         <NavbarItem>
           <Link href="#" className="linkText">
             <div className="flex items-center gap-1">
-              <FaUserGroup />
+              <LuUsers2 />
               <h2>Friends</h2>
             </div>
           </Link>
@@ -58,7 +58,7 @@ export default function App() {
         <NavbarItem>
           <Link href="#" className="linkText">
             <div className="flex items-center gap-1">
-              <FaInfoCircle />
+              <IoIosInformationCircleOutline />
               <h2>About</h2>
             </div>
           </Link>
@@ -67,13 +67,13 @@ export default function App() {
 
       <NavbarContent as="div" className="items-center" justify="end">
         <NavbarItem>
-          <HiOutlineUserGroup />
+          <HiOutlineUserGroup className="text-xl hover:text-blue-400" />
         </NavbarItem>
         <NavbarItem>
-          <BiMessageRoundedDots />
+          <BiMessageRoundedDots className="text-xl hover:text-blue-400" />
         </NavbarItem>
         <NavbarItem>
-          <IoNotificationsOutline />
+          <IoNotificationsOutline className="text-xl hover:text-blue-400" />
         </NavbarItem>
         <Avatar
           isBordered
