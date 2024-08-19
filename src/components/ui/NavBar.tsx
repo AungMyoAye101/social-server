@@ -20,7 +20,7 @@ import { TbCircleDashedPlus } from "react-icons/tb";
 import { HiOutlineUserGroup } from "react-icons/hi";
 import { IoNotificationsOutline } from "react-icons/io5";
 import { BiMessageRoundedDots } from "react-icons/bi";
-
+import { FaBars } from "react-icons/fa";
 export default function App() {
   return (
     <Navbar isBordered shouldHideOnScroll>
@@ -65,7 +65,11 @@ export default function App() {
         </NavbarItem>
       </NavbarContent>
 
-      <NavbarContent as="div" className="items-center" justify="end">
+      <NavbarContent
+        as="div"
+        className="hidden sm:flex gap-4 items-center"
+        justify="end"
+      >
         <NavbarItem>
           <HiOutlineUserGroup className="text-xl hover:text-blue-400" />
         </NavbarItem>
@@ -84,6 +88,11 @@ export default function App() {
           size="sm"
           src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
         />
+      </NavbarContent>
+      <NavbarContent className="flex sm:hidden" justify="end">
+        <NavbarItem>
+          <FaBars className="text-xl hover:text-blue-400" />
+        </NavbarItem>
       </NavbarContent>
     </Navbar>
   );
