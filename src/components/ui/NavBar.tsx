@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import {
   Navbar,
   NavbarBrand,
@@ -11,6 +13,7 @@ import {
   Dropdown,
   DropdownMenu,
   Avatar,
+  Button,
 } from "@nextui-org/react";
 
 import { GoHome } from "react-icons/go";
@@ -22,6 +25,7 @@ import { IoNotificationsOutline } from "react-icons/io5";
 import { BiMessageRoundedDots } from "react-icons/bi";
 import { FaBars } from "react-icons/fa";
 export default function App() {
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <Navbar isBordered shouldHideOnScroll>
       <NavbarBrand>
@@ -91,7 +95,23 @@ export default function App() {
       </NavbarContent>
       <NavbarContent className="flex sm:hidden" justify="end">
         <NavbarItem>
-          <FaBars className="text-xl hover:text-blue-400" />
+          <div onClick={() => setIsOpen((pre) => !pre)} className="space-y-1">
+            <div
+              className={` w-6 bg-red-400 h-1 rounded-sm ${
+                isOpen ? "rotate-45" : ""
+              } origin-left transition-transform ease-in-out duration-120`}
+            ></div>
+            <div
+              className={` w-6 bg-red-400 h-1 rounded-sm ${
+                isOpen ? "opacity-0" : ""
+              } transition-opacity ease-in-out duration-100`}
+            ></div>
+            <div
+              className={` w-6 bg-red-400 h-1 rounded-sm ${
+                isOpen ? "-rotate-45" : ""
+              } origin-left transition-transform ease-in-out duration-120`}
+            ></div>
+          </div>
         </NavbarItem>
       </NavbarContent>
     </Navbar>
