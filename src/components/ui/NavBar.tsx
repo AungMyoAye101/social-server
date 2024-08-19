@@ -95,25 +95,42 @@ export default function App() {
       </NavbarContent>
       <NavbarContent className="flex sm:hidden" justify="end">
         <NavbarItem>
-          <div onClick={() => setIsOpen((pre) => !pre)} className="space-y-1">
+          <div
+            onClick={() => setIsOpen((pre) => !pre)}
+            className="space-y-1 cursor-pointer"
+          >
             <div
-              className={` w-6 bg-red-400 h-1 rounded-sm ${
+              className={` w-6 bg-gray-900 h-1 rounded-sm ${
                 isOpen ? "rotate-45" : ""
               } origin-left transition-transform ease-in-out duration-120`}
             ></div>
             <div
-              className={` w-6 bg-red-400 h-1 rounded-sm ${
+              className={` w-6 bg-gray-900  h-1 rounded-sm ${
                 isOpen ? "opacity-0" : ""
               } transition-opacity ease-in-out duration-100`}
             ></div>
             <div
-              className={` w-6 bg-red-400 h-1 rounded-sm ${
+              className={` w-6 bg-gray-900  h-1 rounded-sm ${
                 isOpen ? "-rotate-45" : ""
               } origin-left transition-transform ease-in-out duration-120`}
             ></div>
           </div>
         </NavbarItem>
       </NavbarContent>
+      {isOpen && (
+        <div
+          className={`absolute top-16 right-0 h-screen  rounded bg-green-400 w-[80%] p-4 ${
+            isOpen ? "opacity-100" : ""
+          }transition-all duration-150 ease-in-out`}
+        >
+          <div>hello</div>
+          <div>hello</div>
+          <div>hello</div>
+          <div>hello</div>
+          <div>hello</div>
+          <div>hello</div>
+        </div>
+      )}
     </Navbar>
   );
 }
