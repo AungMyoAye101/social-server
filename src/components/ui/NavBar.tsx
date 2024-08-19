@@ -15,7 +15,7 @@ import {
 
 export default function App() {
   return (
-    <Navbar isBordered>
+    <Navbar isBordered shouldHideOnScroll>
       <NavbarContent justify="start">
         <NavbarBrand className="mr-4">
           <Link href={"/"}>

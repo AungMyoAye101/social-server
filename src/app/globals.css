@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 .linkText {
-  @apply text-xl font-sans font-semibold;
+  @apply text-xl  font-semibold text-black hover:text-sky-400;
 }
