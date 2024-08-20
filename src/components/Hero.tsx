@@ -6,13 +6,13 @@ import PostCard from "./ui/PostCard";
 const Hero = () => {
   return (
     <section className="flex gap-8">
-      <div className="w-[20%]"></div>
-      <div className="w-[60%] flex flex-col gap-4">
+      <div className="w-[20%] hidden lg:flex"></div>
+      <div className="w-full lg:w-[60%] flex flex-col gap-4">
         <Storybar />
         <Post />
         <PostCard />
       </div>
-      <div className="w-[20%]"></div>
+      <div className="w-[20%] hidden lg:flex"></div>
     </section>
   );
 };
