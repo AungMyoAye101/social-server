@@ -9,3 +9,9 @@
 .menuLink {
   @apply w-full flex justify-center p-2 text-lg font-semibold  text-gray-100  hover:text-black  hover:bg-amber-400 hover:rounded-md;
 }
+.scrolL-bar::-webkit-scrollbar {
+  display: none;
+}
+.scroll-bar {
+  scrollbar-width: none;
+}
