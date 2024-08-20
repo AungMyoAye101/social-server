@@ -5,3 +5,7 @@
 .linkText {
   @apply text-lg  text-black hover:text-sky-400 hover:underline hover:underline-offset-8;
 }
+
+.menuLink {
+  @apply w-full flex justify-center p-2 text-lg font-semibold  text-gray-100  hover:text-black  hover:bg-amber-400 hover:rounded-md;
+}

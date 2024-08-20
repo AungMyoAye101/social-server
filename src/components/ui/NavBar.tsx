@@ -119,16 +119,42 @@ export default function App() {
       </NavbarContent>
       {isOpen && (
         <div
-          className={`absolute top-16 right-0 h-screen  rounded bg-green-400 w-[80%] p-4 ${
+          className={`absolute top-16 right-0 h-[calc(100vh-70px)] rounded-md bg-gray-900 w-[80%] p-4 ${
             isOpen ? "opacity-100" : ""
           }transition-all duration-150 ease-in-out`}
         >
-          <div>hello</div>
-          <div>hello</div>
-          <div>hello</div>
-          <div>hello</div>
-          <div>hello</div>
-          <div>hello</div>
+          <ul>
+            <li>
+              <h1 className="text-xl font-bold text-center  text-slate-100 p-4 border-b-1 border-b-slate-200">
+                Social
+              </h1>
+            </li>
+            <li className=" ">
+              <Link href="/" className="menuLink">
+                Home
+              </Link>
+            </li>
+            <li className=" ">
+              <Link href="/" className="menuLink">
+                Friends
+              </Link>
+            </li>
+            <li className=" ">
+              <Link href="/" className="menuLink">
+                About
+              </Link>
+            </li>
+            <li className=" ">
+              <Link href="/" className="menuLink">
+                Account
+              </Link>
+            </li>
+            <li className=" ">
+              <Link href="/" className="menuLink ">
+                Sign Out
+              </Link>
+            </li>
+          </ul>
         </div>
       )}
     </Navbar>
