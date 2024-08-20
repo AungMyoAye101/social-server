@@ -1,6 +1,7 @@
 import React from "react";
 import Storybar from "./ui/Storybar";
 import Post from "./ui/Post";
+import PostCard from "./ui/PostCard";
 
 const Hero = () => {
   return (
@@ -9,6 +10,7 @@ const Hero = () => {
       <div className="w-[60%] flex flex-col gap-4">
         <Storybar />
         <Post />
+        <PostCard />
       </div>
       <div className="w-[20%]"></div>
     </section>
