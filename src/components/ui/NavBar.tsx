@@ -15,6 +15,15 @@ import {
   Avatar,
   Button,
 } from "@nextui-org/react";
+import {
+  ClerkLoaded,
+  ClerkLoading,
+  ClerkProvider,
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/nextjs";
 
 import { GoHome } from "react-icons/go";
 import { LuUsers2 } from "react-icons/lu";
@@ -24,6 +33,7 @@ import { HiOutlineUserGroup } from "react-icons/hi";
 import { IoNotificationsOutline } from "react-icons/io5";
 import { BiMessageRoundedDots } from "react-icons/bi";
 import { FaBars } from "react-icons/fa";
+
 export default function App() {
   const [isOpen, setIsOpen] = useState(false);
   return (
@@ -83,15 +93,17 @@ export default function App() {
         <NavbarItem>
           <IoNotificationsOutline className="text-xl hover:text-blue-400" />
         </NavbarItem>
-        <Avatar
-          isBordered
-          as="button"
-          className="transition-transform"
-          color="secondary"
-          name="Jason Hughes"
-          size="sm"
-          src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
-        />
+        <ClerkLoading>
+          <p>loading..</p>
+        </ClerkLoading>
+        <ClerkLoaded>
+          <SignedIn>
+            <p>Singn in</p>
+          </SignedIn>
+          <SignedOut>
+            <p>Signed out</p>
+          </SignedOut>
+        </ClerkLoaded>
       </NavbarContent>
       <NavbarContent className="flex sm:hidden" justify="end">
         <NavbarItem>
