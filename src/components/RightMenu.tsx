@@ -1,9 +1,10 @@
 import React from "react";
 import FriendsReq from "./ui/FriendsReq";
 import BirthDay from "./ui/BirthDay";
-import Ads from "./ui/ads";
+
 import UserInfo from "./ui/UserInfo";
 import UserMedia from "./ui/UserMedia";
+import Ads from "./ui/ads";
 
 const RightMenu = () => {
   return (

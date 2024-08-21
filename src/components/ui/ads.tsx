@@ -4,7 +4,7 @@ import React from "react";
 import Image1 from "@/components/img/image 11.jpg";
 import Image5 from "@/components/img/userPhoto.jpg";
 
-const ads = () => {
+const Ads = () => {
   return (
     <section className="flex flex-col gap-4 rounded shadow-md p-4 border border-gray-100">
       <h1 className="font-sans text-md font-semibold">Sponered Ads</h1>
@@ -41,4 +41,4 @@ const ads = () => {
   );
 };
 
-export default ads;
+export default Ads;
