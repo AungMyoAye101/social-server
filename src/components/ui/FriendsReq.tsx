@@ -73,26 +73,6 @@ const FriendsReq = () => {
             </span>
           </div>
         </div>
-        <div className="flex justify-between items-center hover:text-purple-700 rounded hover:bg-gray-100 ">
-          <div className="flex gap-2 items-center">
-            <Avatar
-              showFallback
-              color="secondary"
-              name="John"
-              src="https://images.unsplash.com/broken"
-              size="sm"
-            />
-            <h3>Chris Evan</h3>
-          </div>
-          <div className="flex gap-1 items-center">
-            <span>
-              <FaRegCircleCheck className="text-lg text-green-300 cursor-pointer hover:scale-125 hover:rotate-180 transition-all duration-150 ease-in-out" />
-            </span>
-            <span>
-              <MdOutlineCancel className="text-xl text-red-300 cursor-pointer hover:scale-125 hover:rotate-180 transition-all duration-150 ease-in-out" />
-            </span>
-          </div>
-        </div>
       </div>
     </section>
   );
