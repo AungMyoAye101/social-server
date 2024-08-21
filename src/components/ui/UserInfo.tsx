@@ -21,7 +21,7 @@ const UserInfo = () => {
       </div>
       {/* User bio */}
       <div>
-        <p className="text-sm line-clamp-3 ">
+        <p className="text-sm line-clamp-3 font-thin">
           Lorem ipsum dolor, sit amet consectetur adipisicing elit.
         </p>
       </div>
@@ -29,20 +29,20 @@ const UserInfo = () => {
       {/* User status */}
       <div className="flex flex-col gap-3 ">
         <div className="flex gap-2 items-center">
-          <FaLocationDot />
+          <FaLocationDot className="text-gray-400" />
           <p className="text-sm">
             Living in <span className="font-semibold">Myanmar</span>
           </p>
         </div>
         <div className="flex gap-2 items-center">
-          <RiGraduationCapFill />
+          <RiGraduationCapFill className="text-gray-400" />
           <p className="text-sm">
-            Gradutaded at{" "}
+            Went to
             <span className="font-semibold">Yandanbon Universty</span>
           </p>
         </div>
         <div className="flex gap-2 items-center">
-          <MdOutlineWork />
+          <MdOutlineWork className="text-gray-400" />
           <p className="text-sm">
             Work at <span className="font-semibold">AnyTech.Org</span>
           </p>

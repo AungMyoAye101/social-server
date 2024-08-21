@@ -12,65 +12,59 @@ const UserMedia = () => {
   return (
     <section className="card-container">
       <div className="flex justify-between">
-        <h1 className="font-sans font-medium">User Infomation </h1>
+        <h1 className="font-sans font-medium">User Media </h1>
         <Link href="/" color="primary" size="sm">
           See all
         </Link>
       </div>
       <div className="flex flex-wrap justify-between gap-1">
-        {/* <Image
-          src={UserPhoto}
-          width={100}
-          height={100}
-          alt="user media photos"
-        /> */}
-        <div className="relative w-1/4 h-24">
+        <div className="relative w-1/4 h-24 overflow-hidden">
           <Image
             src={Image1}
             fill
             alt="user media photos"
-            className="object-cover rounded-md"
+            className="object-cover cursor-pointer hover:scale-125 rounded-md transition-size duration-100 ease-out"
           />
         </div>
-        <div className="relative w-1/3 h-24 ">
+        <div className="relative w-1/3 h-24 overflow-hidden">
           <Image
             src={Image2}
             fill
             alt="user media photos"
-            className="object-cover"
+            className="object-cover cursor-pointer hover:scale-125 rounded-md transition-size duration-100 ease-out"
           />
         </div>
-        <div className="relative w-1/3 h-24">
+        <div className="relative w-1/3 h-24 overflow-hidden">
           <Image
             src={Image3}
             fill
             alt="user media photos"
-            className="object-cover"
+            className="object-cover cursor-pointer hover:scale-125 rounded-md transition-size duration-100 ease-out"
           />
         </div>
 
-        <div className="relative w-1/4 h-24">
+        <div className="relative w-1/4 h-24 overflow-hidden">
           <Image
             src={Image4}
             fill
-            alt="user media photos"
-            className="object-cover"
+            alt="user media photos "
+            className="object-cover cursor-pointer hover:scale-125 rounded-md transition-size duration-100 ease-out"
           />
         </div>
-        <div className="relative w-1/3 h-24">
+        <div className="relative w-1/3 h-24 overflow-hidden">
           <Image
             src={Image6}
             fill
             alt="user media photos"
-            className="object-cover"
+            className="object-cover cursor-pointer hover:scale-125 rounded-md transition-size duration-100 ease-out"
           />
         </div>
-        <div className="relative w-1/3 h-24">
+        <div className="relative w-1/3 h-24 overflow-hidden">
           <Image
             src={Image5}
             fill
             alt="user media photos"
-            className="object-cover"
+            className="object-cover cursor-pointer hover:scale-125 rounded-md transition-size duration-100 ease-out"
           />
         </div>
       </div>
