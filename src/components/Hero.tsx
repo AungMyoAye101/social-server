@@ -8,7 +8,7 @@ import Link from "next/link";
 const Hero = () => {
   return (
     <section className="flex gap-8 justify-between p-4">
-      <div className="hidden lg:flex w-[25%]">
+      <div className="hidden lg:flex w-[20%]">
         <section className="flex flex-col gap-4 p-4 rounded shadow-md w-full">
           <div className="flex justify-between">
             <h2 className="text-sm ">Friend Requests</h2>
@@ -22,7 +22,7 @@ const Hero = () => {
         <Post />
         <PostCard />
       </div>
-      <div className=" hidden lg:flex w-[25%]">
+      <div className=" hidden lg:flex w-[30%]">
         <RightMenu />
       </div>
     </section>
