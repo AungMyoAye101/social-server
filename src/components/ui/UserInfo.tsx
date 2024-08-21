@@ -1,4 +1,4 @@
-import { Link } from "@nextui-org/react";
+import { Button, Link } from "@nextui-org/react";
 import Image from "next/image";
 import React from "react";
 import { FaLocationDot } from "react-icons/fa6";
@@ -58,6 +58,10 @@ const UserInfo = () => {
           </div>
         </div>
       </div>
+      <Button color="primary">Following</Button>
+      <Link href="/" color="danger" className="justify-end" size="sm">
+        Block users
+      </Link>
     </section>
   );
 };
