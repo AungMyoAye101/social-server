@@ -3,11 +3,13 @@ import FriendsReq from "./ui/FriendsReq";
 import BirthDay from "./ui/BirthDay";
 import Ads from "./ui/ads";
 import UserInfo from "./ui/UserInfo";
+import UserMedia from "./ui/UserMedia";
 
 const RightMenu = () => {
   return (
     <section className="w-full flex flex-col gap-4 ">
       <UserInfo />
+      <UserMedia />
       <FriendsReq />
       <BirthDay />
       <Ads />
