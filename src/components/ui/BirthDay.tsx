@@ -15,7 +15,7 @@ const BirthDay = () => {
             src="https://images.unsplash.com/broken"
             size="sm"
           />
-          <h3>Chris Evan</h3>
+          <h3 className="text-lg font-serif">Chris Evan</h3>
         </div>
         <div>
           <Button color="primary" size="sm">

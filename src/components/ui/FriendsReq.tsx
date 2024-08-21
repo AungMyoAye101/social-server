@@ -22,7 +22,7 @@ const FriendsReq = () => {
               src="https://images.unsplash.com/broken"
               size="sm"
             />
-            <h3>Chris Evan</h3>
+            <h3 className="text-lg font-serif ">Chris Evan</h3>
           </div>
           <div className="flex gap-1 items-center">
             <span>
