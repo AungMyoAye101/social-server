@@ -106,7 +106,7 @@ const PostCard = () => {
           </div>
         </CardHeader>
         <div className="px-4 flex flex-col gap-2">
-          <div className="relative w-full h-40 sm:h-56 md:h-60 lg:h-52">
+          <div className="relative w-full h-40 sm:h-56 md:h-64 lg:h-64">
             <Image src={Image1} alt="photo" fill className="rounded" />
           </div>
           <p>
