@@ -5,8 +5,8 @@ import { Button } from "@nextui-org/react";
 
 const UserProfile = () => {
   return (
-    <section className="flex flex-col gap-2 rounded shadow-md ">
-      <div className="w-full h-24 relative">
+    <section className="flex flex-col gap-2 rounded shadow-md py-2 ">
+      <div className="w-full h-28 relative">
         <Image
           src={Image2}
           fill
@@ -15,13 +15,13 @@ const UserProfile = () => {
         />
         <Image
           src={Image2}
-          width={40}
-          height={40}
+          width={56}
+          height={56}
           alt="user cover photo"
-          className="size-10 ring-2 ring-gray-100 rounded-full absolute left-0 right-0 -bottom-3 mx-auto object-cover"
+          className="size-14 ring-2 ring-gray-100 rounded-full absolute left-0 right-0 -bottom-6 mx-auto object-cover"
         />
       </div>
-      <div className="flex flex-col  p-2">
+      <div className="flex flex-col  p-2 space-y-1">
         <h1 className="font-serif text-lg font-semibold text-center">
           Chris Evan
         </h1>

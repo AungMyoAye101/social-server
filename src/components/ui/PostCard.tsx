@@ -45,7 +45,7 @@ const PostCard = () => {
           </p>
         </div>
         <CardFooter>
-          <div className="flex w-full">
+          <div className="flex w-full ">
             <Button
               size="sm"
               radius="none"
