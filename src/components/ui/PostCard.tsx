@@ -6,6 +6,10 @@ import {
   Avatar,
   Button,
 } from "@nextui-org/react";
+
+import { BiLike } from "react-icons/bi";
+import { GoComment } from "react-icons/go";
+import { TbShare3 } from "react-icons/tb";
 import Image from "next/image";
 import Image5 from "@/components/img/userPhoto.jpg";
 import Image1 from "@/components/img/image 11.jpg";
@@ -13,7 +17,7 @@ import Image1 from "@/components/img/image 11.jpg";
 const PostCard = () => {
   return (
     <section className="flex flex-col gap-6">
-      <Card className="">
+      <Card className="bg-slate-50">
         <CardHeader className="justify-between">
           <div className="flex gap-5">
             <Avatar
@@ -40,16 +44,33 @@ const PostCard = () => {
             voluptatum numquam qui sint error blanditiis.
           </p>
         </div>
-        <CardFooter className="flex gap-4">
-          <Button size="sm" radius="sm" className="flex-1">
-            Like
-          </Button>
-          <Button size="sm" radius="sm" className="flex-1">
-            Comment
-          </Button>
-          <Button size="sm" radius="sm" className="flex-1">
-            Share
-          </Button>
+        <CardFooter>
+          <div className="flex w-full">
+            <Button
+              size="sm"
+              radius="none"
+              className="flex-1 bg-slate-50 text=lg  font-serif hover:bg-gray-300 rounded"
+            >
+              <BiLike className="text-lg" />
+              Like
+            </Button>
+            <Button
+              size="sm"
+              radius="none"
+              className="flex-1 bg-slate-50 text=lg  font-serif hover:bg-gray-300 rounded"
+            >
+              <GoComment className="text-lg" />
+              Comment
+            </Button>
+            <Button
+              size="sm"
+              radius="none"
+              className="flex-1 bg-slate-50 text=lg  font-serif hover:bg-gray-300 rounded"
+            >
+              <TbShare3 className="text-lg " />
+              Share
+            </Button>
+          </div>
         </CardFooter>
       </Card>
     </section>

@@ -9,10 +9,10 @@ import LeftMenu from "./LeftMenu";
 const Hero = () => {
   return (
     <section className="flex gap-8 justify-between p-4">
-      <div className="hidden lg:flex w-[20%]">
+      <div className="hidden lg:flex w-[30%]">
         <LeftMenu />
       </div>
-      <div className="flex flex-col gap-4 w-full lg:w-[50%]">
+      <div className="flex flex-col gap-4 w-full lg:w-[40%]">
         <Storybar />
         <Post />
         <PostCard />
