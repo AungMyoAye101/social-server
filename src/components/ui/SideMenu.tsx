@@ -1,6 +1,13 @@
 import Link from "next/link";
 import React from "react";
 import { CgProfile } from "react-icons/cg";
+import { GoVideo } from "react-icons/go";
+import { LuActivitySquare } from "react-icons/lu";
+import { MdEvent } from "react-icons/md";
+import { FaRegNewspaper } from "react-icons/fa";
+import { GrUserSettings } from "react-icons/gr";
+import { BiPhotoAlbum } from "react-icons/bi";
+import { MdOutlineStore } from "react-icons/md";
 
 const SideMenu = () => {
   return (
@@ -20,7 +27,7 @@ const SideMenu = () => {
             href={"/"}
             className="flex gap-2 items-center  hover:bg-purple-300 p-2 rounded"
           >
-            <CgProfile className="text-xl text-blue-500" />
+            <GoVideo className="text-xl text-blue-500" />
             <span className="text-sm ">Video</span>
           </Link>
         </li>
@@ -29,7 +36,7 @@ const SideMenu = () => {
             href={"/"}
             className="flex gap-2 items-center  hover:bg-purple-300 p-2 rounded"
           >
-            <CgProfile className="text-xl text-blue-500" />{" "}
+            <LuActivitySquare className="text-xl text-blue-500" />{" "}
             <span className="text-sm ">Activity</span>
           </Link>
         </li>
@@ -38,7 +45,7 @@ const SideMenu = () => {
             href={"/"}
             className="flex gap-2 items-center  hover:bg-purple-300 p-2 rounded"
           >
-            <CgProfile className="text-xl text-blue-500" />{" "}
+            <MdOutlineStore className="text-xl text-blue-500" />{" "}
             <span className="text-sm ">Marketplace</span>
           </Link>
         </li>
@@ -47,7 +54,7 @@ const SideMenu = () => {
             href={"/"}
             className="flex gap-2 items-center  hover:bg-purple-300 p-2 rounded"
           >
-            <CgProfile className="text-xl text-blue-500" />{" "}
+            <BiPhotoAlbum className="text-xl text-blue-500" />{" "}
             <span className="text-sm ">Album</span>
           </Link>
         </li>
@@ -56,7 +63,7 @@ const SideMenu = () => {
             href={"/"}
             className="flex gap-2 items-center hover:bg-purple-300 p-2 rounded"
           >
-            <CgProfile className="text-xl text-blue-500" />{" "}
+            <MdEvent className="text-xl text-blue-500" />{" "}
             <span className="text-sm ">Event</span>
           </Link>
         </li>
@@ -65,8 +72,17 @@ const SideMenu = () => {
             href={"/"}
             className="flex gap-2 items-center  hover:bg-purple-300 p-2 rounded"
           >
-            <CgProfile className="text-xl text-blue-500" />{" "}
+            <FaRegNewspaper className="text-xl text-blue-500" />{" "}
             <span className="text-sm">News</span>
+          </Link>
+        </li>
+        <li>
+          <Link
+            href={"/"}
+            className="flex gap-2 items-center  hover:bg-purple-300 p-2 rounded"
+          >
+            <GrUserSettings className="text-xl text-blue-500" />{" "}
+            <span className="text-sm">Account Setting</span>
           </Link>
         </li>
       </ul>
