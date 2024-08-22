@@ -16,7 +16,7 @@ const SideMenu = () => {
         <li>
           <Link
             href={"/"}
-            className="flex gap-2 items-center  hover:bg-purple-300 p-2 rounded"
+            className="flex gap-2 items-center  hover:bg-purple-300 p-3 rounded"
           >
             <CgProfile className="text-xl text-blue-500" />{" "}
             <span className="text-sm ">My Profile</span>
@@ -25,7 +25,7 @@ const SideMenu = () => {
         <li>
           <Link
             href={"/"}
-            className="flex gap-2 items-center  hover:bg-purple-300 p-2 rounded"
+            className="flex gap-2 items-center  hover:bg-purple-300 p-3 rounded"
           >
             <GoVideo className="text-xl text-blue-500" />
             <span className="text-sm ">Video</span>
@@ -34,7 +34,7 @@ const SideMenu = () => {
         <li>
           <Link
             href={"/"}
-            className="flex gap-2 items-center  hover:bg-purple-300 p-2 rounded"
+            className="flex gap-2 items-center  hover:bg-purple-300 p-3 rounded"
           >
             <LuActivitySquare className="text-xl text-blue-500" />{" "}
             <span className="text-sm ">Activity</span>
@@ -43,7 +43,7 @@ const SideMenu = () => {
         <li>
           <Link
             href={"/"}
-            className="flex gap-2 items-center  hover:bg-purple-300 p-2 rounded"
+            className="flex gap-2 items-center  hover:bg-purple-300 p-3 rounded"
           >
             <MdOutlineStore className="text-xl text-blue-500" />{" "}
             <span className="text-sm ">Marketplace</span>
@@ -52,7 +52,7 @@ const SideMenu = () => {
         <li>
           <Link
             href={"/"}
-            className="flex gap-2 items-center  hover:bg-purple-300 p-2 rounded"
+            className="flex gap-2 items-center  hover:bg-purple-300 p-3 rounded"
           >
             <BiPhotoAlbum className="text-xl text-blue-500" />{" "}
             <span className="text-sm ">Album</span>
@@ -61,7 +61,7 @@ const SideMenu = () => {
         <li>
           <Link
             href={"/"}
-            className="flex gap-2 items-center hover:bg-purple-300 p-2 rounded"
+            className="flex gap-2 items-center hover:bg-purple-300 p-3 rounded"
           >
             <MdEvent className="text-xl text-blue-500" />{" "}
             <span className="text-sm ">Event</span>
@@ -70,7 +70,7 @@ const SideMenu = () => {
         <li>
           <Link
             href={"/"}
-            className="flex gap-2 items-center  hover:bg-purple-300 p-2 rounded"
+            className="flex gap-2 items-center  hover:bg-purple-300 p-3 rounded"
           >
             <FaRegNewspaper className="text-xl text-blue-500" />{" "}
             <span className="text-sm">News</span>
@@ -79,7 +79,7 @@ const SideMenu = () => {
         <li>
           <Link
             href={"/"}
-            className="flex gap-2 items-center  hover:bg-purple-300 p-2 rounded"
+            className="flex gap-2 items-center  hover:bg-purple-300 p-3 rounded"
           >
             <GrUserSettings className="text-xl text-blue-500" />{" "}
             <span className="text-sm">Account Setting</span>
