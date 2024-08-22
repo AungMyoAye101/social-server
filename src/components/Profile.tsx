@@ -4,7 +4,7 @@ import { Button } from "@nextui-org/react";
 
 const Profile = () => {
   return (
-    <section className="flex flex-col gap-9 rounded shadow-md p-4 ">
+    <section className="flex flex-col gap-9 rounded shadow-md p-4 border border-gray-100 ">
       <div className="w-full h-48 relative">
         <Image
           src={Image2}
@@ -17,7 +17,7 @@ const Profile = () => {
           width={80}
           height={80}
           alt="user cover photo"
-          className="size-20 ring-4 ring-sky-100 rounded-full absolute left-0 right-0 -bottom-10 mx-auto object-cover"
+          className="size-20 ring-4 ring-slate-100 rounded-full absolute left-0 right-0 -bottom-10 mx-auto object-cover"
         />
       </div>
       <div className="flex flex-col  p-2 space-y-1">

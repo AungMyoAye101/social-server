@@ -1,11 +1,11 @@
 import Image from "next/image";
 import React from "react";
 import Image2 from "@/components/img/image 7.jpg";
-import { Button } from "@nextui-org/react";
+import { Button, Link } from "@nextui-org/react";
 
 const UserProfile = () => {
   return (
-    <section className="flex flex-col gap-2 rounded shadow-md py-2 ">
+    <section className="flex flex-col gap-4 rounded shadow-md p-4 border border-gray-100">
       <div className="w-full h-28 relative">
         <Image
           src={Image2}
@@ -18,7 +18,7 @@ const UserProfile = () => {
           width={56}
           height={56}
           alt="user cover photo"
-          className="size-14 ring-2 ring-gray-100 rounded-full absolute left-0 right-0 -bottom-6 mx-auto object-cover"
+          className="size-14 ring-4 ring-gray-100 rounded-full absolute left-0 right-0 -bottom-6 mx-auto object-cover"
         />
       </div>
       <div className="flex flex-col  p-2 space-y-1">
@@ -29,9 +29,13 @@ const UserProfile = () => {
           <span className="font-semibold">1M </span>
           Followers
         </p>
-        <Button size="sm" color="primary">
-          My Profile
-        </Button>
+        <Link
+          href={"/profile"}
+          size="sm"
+          className="w-full bg-blue-500 p-2 rounded-md text-slate-100 "
+        >
+          <span className=" mx-auto">My Profile</span>
+        </Link>
       </div>
     </section>
   );

@@ -11,7 +11,7 @@ import { MdOutlineStore } from "react-icons/md";
 
 const SideMenu = () => {
   return (
-    <section className="flex flex-col gap-4 rounded shadow-md py-4">
+    <section className="flex flex-col gap-4 rounded shadow-md py-4 border border-gray-100">
       <ul>
         <li>
           <Link
@@ -52,7 +52,7 @@ const SideMenu = () => {
         <li>
           <Link
             href={"/"}
-            className="flex gap-2 items-center  hover:bg-purple-300 p-3 rounded"
+            className="flex gap-2 items-center  hover:bg-purple-300 p-3 rounded "
           >
             <BiPhotoAlbum className="text-xl text-blue-500" />{" "}
             <span className="text-sm ">Album</span>
