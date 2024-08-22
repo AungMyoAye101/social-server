@@ -5,6 +5,7 @@ import PostCard from "./ui/PostCard";
 import RightMenu from "./RightMenu";
 import Link from "next/link";
 import LeftMenu from "./LeftMenu";
+import Profile from "./Profile";
 
 const Hero = () => {
   return (
@@ -14,6 +15,7 @@ const Hero = () => {
       </div>
       <div className="flex flex-col gap-4 w-full lg:w-[40%]">
         <Storybar />
+        <Profile />
         <Post />
         <PostCard />
       </div>
