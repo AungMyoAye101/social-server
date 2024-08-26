@@ -102,7 +102,9 @@ export default function App() {
           <SignedIn>
             <UserButton />
           </SignedIn>
-          <SignedOut>Sign out</SignedOut>
+          <SignedOut>
+            <button>sign out</button>
+          </SignedOut>
         </ClerkLoaded>
       </NavbarContent>
       <NavbarContent className="flex sm:hidden" justify="end">
