@@ -33,6 +33,8 @@ import { HiOutlineUserGroup } from "react-icons/hi";
 import { IoNotificationsOutline } from "react-icons/io5";
 import { BiMessageRoundedDots } from "react-icons/bi";
 import { FaBars } from "react-icons/fa";
+import Image2 from "@/components/img/image 7.jpg";
+import Image from "next/image";
 
 export default function App() {
   const [isOpen, setIsOpen] = useState(false);
@@ -98,11 +100,9 @@ export default function App() {
         </ClerkLoading>
         <ClerkLoaded>
           <SignedIn>
-            <p>Singn in</p>
+            <UserButton />
           </SignedIn>
-          <SignedOut>
-            <p>Signed out</p>
-          </SignedOut>
+          <SignedOut>Sign out</SignedOut>
         </ClerkLoaded>
       </NavbarContent>
       <NavbarContent className="flex sm:hidden" justify="end">
@@ -159,11 +159,6 @@ export default function App() {
             <li className=" ">
               <Link href="/" className="menuLink">
                 Account
-              </Link>
-            </li>
-            <li className=" ">
-              <Link href="/" className="menuLink ">
-                Sign Out
               </Link>
             </li>
           </ul>
