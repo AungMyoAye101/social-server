@@ -1,5 +1,5 @@
 import React from "react";
-import Ads from "./ui/ads";
+import Ads from "./ui/Ads";
 import UserProfile from "./ui/UserProfile";
 import SideMenu from "./ui/SideMenu";
 

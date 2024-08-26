@@ -4,7 +4,7 @@ import BirthDay from "./ui/BirthDay";
 
 import UserInfo from "./ui/UserInfo";
 import UserMedia from "./ui/UserMedia";
-import Ads from "./ui/ads";
+import Ads from "./ui/Ads";
 
 const RightMenu = () => {
   return (
