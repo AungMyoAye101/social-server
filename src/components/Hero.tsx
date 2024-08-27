@@ -15,7 +15,7 @@ const Hero = () => {
       </div>
       <div className="flex flex-col gap-4 w-full lg:w-[40%]">
         <Storybar />
-        <Profile />
+
         <Post />
         <PostCard />
       </div>

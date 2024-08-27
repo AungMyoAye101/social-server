@@ -1,3 +1,4 @@
+import { PostCreate } from "@/actions/action";
 import { Avatar, Textarea } from "@nextui-org/react";
 import Image from "next/image";
 import React from "react";
@@ -16,13 +17,15 @@ const Post = () => {
           />
         </div>
         <div className="flex-1">
-          <div>
+          <form action={PostCreate}>
             <Textarea
               isRequired
               placeholder="What's on your mind..."
               className="flex-1"
+              name="content"
             />
-          </div>
+            <button type="submit">Post</button>
+          </form>
           {/* post options */}
           <div className="flex flex-wrap gap-3 py-2">
             <div className="flex items-center gap-1">

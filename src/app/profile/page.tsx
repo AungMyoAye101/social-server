@@ -12,7 +12,6 @@ const page = () => {
       </div>
       <div className="flex flex-col gap-4 w-full lg:w-[40%]">
         <Profile />
-
         <PostCard />
       </div>
       <div className=" hidden lg:flex w-[30%]">
