@@ -30,6 +30,7 @@ model User {
   followRqReceiver FollowerRequest[] @relation("receiver")
   blocker Block[] @relation("blocker")
   blocked Block[] @relation("blocked")
+  story Story[]
 }
 
 model Post {
@@ -100,4 +101,13 @@ blocked User @relation("blocked",fields: [blockedId], references: [id],onDelete:
   blockedId Int
  
  @@unique([blockerId,blockedId])
+}
+
+model Story {
+    id        Int     @id @default(autoincrement())
+    createdAt DateTime @default(now())
+    expiredAt DateTime
+    image String?
+    author    User    @relation(fields: [authorId], references: [id],onDelete: Cascade)
+  authorId  Int @unique
 }
