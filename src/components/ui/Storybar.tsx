@@ -7,77 +7,90 @@ const Storybar = () => {
         <div className="flex flex-col items-center gap-2">
           <Avatar
             showFallback
-            isBordered
             color="primary"
             name="John"
             src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
-            size="lg"
+            size="md"
           />
           <h2 className="text-md font-semibold font-serif">Chris</h2>
         </div>
         <div className="flex flex-col items-center gap-2">
           <Avatar
             showFallback
-            isBordered
             color="primary"
             name="John"
             src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
-            size="lg"
+            size="md"
           />
           <h2 className="text-md font-semibold font-serif">Chris</h2>
         </div>
         <div className="flex flex-col items-center gap-2">
           <Avatar
             showFallback
-            isBordered
             color="primary"
             name="John"
             src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
-            size="lg"
+            size="md"
           />
           <h2 className="text-md font-semibold font-serif">Chris</h2>
         </div>
         <div className="flex flex-col items-center gap-2">
           <Avatar
             showFallback
-            isBordered
             color="primary"
             name="John"
             src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
-            size="lg"
+            size="md"
           />
           <h2 className="text-md font-semibold font-serif">Chris</h2>
         </div>
         <div className="flex flex-col items-center gap-2">
           <Avatar
             showFallback
-            isBordered
             color="primary"
             name="John"
             src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
-            size="lg"
+            size="md"
           />
           <h2 className="text-md font-semibold font-serif">Chris</h2>
         </div>
         <div className="flex flex-col items-center gap-2">
           <Avatar
             showFallback
-            isBordered
             color="primary"
             name="John"
             src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
-            size="lg"
+            size="md"
           />
           <h2 className="text-md font-semibold font-serif">Chris</h2>
         </div>
         <div className="flex flex-col items-center gap-2">
           <Avatar
             showFallback
-            isBordered
             color="primary"
             name="John"
             src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
-            size="lg"
+            size="md"
+          />
+          <h2 className="text-md font-semibold font-serif">Chris</h2>
+        </div>
+        <div className="flex flex-col items-center gap-2">
+          <Avatar
+            showFallback
+            color="primary"
+            name="John"
+            src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
+            size="md"
+          />
+          <h2 className="text-md font-semibold font-serif">Chris</h2>
+        </div>
+        <div className="flex flex-col items-center gap-2">
+          <Avatar
+            showFallback
+            color="primary"
+            name="John"
+            src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
+            size="md"
           />
           <h2 className="text-md font-semibold font-serif">Chris</h2>
         </div>
