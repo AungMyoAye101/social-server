@@ -13,18 +13,23 @@ const Post = () => {
             color="primary"
             name="John"
             src="https://images.unsplash.com/broken"
-            size="lg"
+            size="md"
           />
         </div>
         <div className="flex-1">
-          <form action={PostCreate}>
+          <form action={PostCreate} className="flex items-end gap-2">
             <Textarea
               isRequired
               placeholder="What's on your mind..."
               className="flex-1"
               name="content"
             />
-            <button type="submit">Post</button>
+            <button
+              className="text-sm font-serif py-2 px-4 border border-gray-200 rounded shadow-md"
+              type="submit"
+            >
+              Post
+            </button>
           </form>
           {/* post options */}
           <div className="flex flex-wrap gap-3 py-2">
@@ -35,7 +40,7 @@ const Post = () => {
                 width={25}
                 height={25}
               />
-              <p className="font-serif font-semibold">Photo</p>
+              <p className="font-serif ">Photo</p>
             </div>
 
             <div className="flex items-center gap-1">
@@ -45,11 +50,11 @@ const Post = () => {
                 width={20}
                 height={20}
               />
-              <p className="font-serif font-semibold">Video</p>
+              <p className="font-serif ">Video</p>
             </div>
             <div className="flex items-center gap-1">
               <Image src={"/live.svg"} alt="live icon" width={25} height={25} />
-              <p className="font-serif font-semibold">Live</p>
+              <p className="font-serif ">Live</p>
             </div>
             <div className="flex items-center gap-1">
               <Image
@@ -58,7 +63,7 @@ const Post = () => {
                 width={19}
                 height={19}
               />
-              <p className="font-serif font-semibold">Event</p>
+              <p className="font-serif ">Event</p>
             </div>
           </div>
         </div>
