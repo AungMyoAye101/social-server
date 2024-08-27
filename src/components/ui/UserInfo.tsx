@@ -16,7 +16,9 @@ const UserInfo = () => {
         </Link>
       </div>
       <div className="flex items-center gap-2">
-        <h1 className="font-serif font-bold text-xl">Chris Even</h1>
+        <h1 className="font-serif font-semibold text-lg text-gray-700">
+          Chris Even
+        </h1>
         <span className="text-sm ">@chriseven</span>
       </div>
       {/* User bio */}
@@ -31,20 +33,24 @@ const UserInfo = () => {
         <div className="flex gap-2 items-center">
           <FaLocationDot className="text-gray-400" />
           <p className="text-sm">
-            Living in <span className="font-semibold">Myanmar</span>
+            Living in{" "}
+            <span className="text-gray-600 font-semibold">Myanmar</span>
           </p>
         </div>
         <div className="flex gap-2 items-center">
           <RiGraduationCapFill className="text-gray-400" />
           <p className="text-sm">
             Went to
-            <span className="font-semibold">Yandanbon Universty</span>
+            <span className="text-gray-600 font-semibold">
+              Yandanbon Universty
+            </span>
           </p>
         </div>
         <div className="flex gap-2 items-center">
           <MdOutlineWork className="text-gray-400" />
           <p className="text-sm">
-            Work at <span className="font-semibold">AnyTech.Org</span>
+            Work at{" "}
+            <span className="text-gray-600 font-semibold">AnyTech.Org</span>
           </p>
         </div>
         <div className="flex gap-2 items-center justify-between">
