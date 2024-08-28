@@ -118,9 +118,7 @@ export default function App() {
             <UserButton />
           </SignedIn>
           <SignedOut>
-            <div>
-              <Link href="/signin">Sign Out</Link>
-            </div>
+            <SignInButton />
           </SignedOut>
         </ClerkLoaded>
       </NavbarContent>
