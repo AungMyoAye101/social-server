@@ -22,7 +22,7 @@ const Post = () => {
               isRequired
               placeholder="What's on your mind..."
               className="flex-1"
-              name="content"
+              name="title"
             />
             <button
               className="text-sm font-serif py-2 px-4 border border-gray-200 rounded shadow-md"
