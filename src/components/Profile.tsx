@@ -1,8 +1,22 @@
 import Image from "next/image";
 import Image2 from "@/components/img/image 7.jpg";
 import { Button } from "@nextui-org/react";
+import prisma from "@/db/script";
+import { auth } from "@clerk/nextjs/server";
 
-const Profile = () => {
+interface UserProps {
+  name: string;
+  postCount: number;
+  followerCount: number;
+  followingCount: number;
+}
+
+const Profile = ({
+  name,
+  postCount,
+  followerCount,
+  followingCount,
+}: UserProps) => {
   return (
     <section className="flex flex-col gap-9 rounded shadow-md p-4 border border-gray-100 ">
       <div className="w-full h-48 relative">
@@ -21,24 +35,28 @@ const Profile = () => {
         />
       </div>
       <div className="flex flex-col  p-2 space-y-1">
-        <h1 className="font-serif text-xl font-semibold text-center">
-          Chris Evan
-        </h1>
+        <h1 className="font-serif text-xl font-semibold text-center">{name}</h1>
         <div className="flex justify-center items-center gap-6">
           <div className="flex flex-col items-center ">
-            <span className="text-lg font-semibold text-gray-500">50+</span>
+            <span className="text-lg font-semibold text-gray-500">
+              {postCount}
+            </span>
             <span className="text-center font-lg font-semibold text-gray-700">
               Posts
             </span>
           </div>
           <div className="flex flex-col items-center ">
-            <span className="text-lg font-semibold text-gray-500">1M</span>
+            <span className="text-lg font-semibold text-gray-500">
+              {followerCount}
+            </span>
             <span className="text-center font-lg font-semibold text-gray-700">
               Followers
             </span>
           </div>
           <div className="flex flex-col items-center ">
-            <span className="text-lg font-semibold text-gray-500">0</span>
+            <span className="text-lg font-semibold text-gray-500">
+              {followingCount}
+            </span>
             <span className="text-center font-lg font-semibold text-gray-700">
               Following
             </span>

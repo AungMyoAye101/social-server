@@ -17,7 +17,7 @@ const Hero = () => {
         <Storybar />
 
         <Post />
-        <PostCard />
+        {/* <PostCard /> */}
       </div>
       <div className=" hidden lg:flex w-[30%]">
         <RightMenu />

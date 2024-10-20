@@ -2,8 +2,10 @@ import Image from "next/image";
 import React from "react";
 import Image2 from "@/components/img/image 7.jpg";
 import { Button, Link } from "@nextui-org/react";
+import { auth } from "@clerk/nextjs/server";
 
 const UserProfile = () => {
+  const { userId } = auth();
   return (
     <section className="flex flex-col gap-4 rounded shadow-md p-4 border border-gray-100">
       <div className="w-full h-28 relative">
@@ -30,7 +32,7 @@ const UserProfile = () => {
           Followers
         </p>
         <Link
-          href={"/profile"}
+          href={`/profile/${userId}`}
           size="sm"
           className="w-full bg-blue-500 p-2 rounded-md text-slate-100 "
         >
