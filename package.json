@@ -1,30 +1,41 @@
 {
-  "name": "social",
-  "version": "0.1.0",
-  "private": true,
+  "name": "social-server",
+  "version": "1.0.0",
+  "main": "dist/index.js",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "node dist/index.js",
+    "dev": "nodemon src/index.ts",
+    "build": "tsc"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AungMyoAye101/social-server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AungMyoAye101/social-server/issues"
+  },
+  "homepage": "https://github.com/AungMyoAye101/social-server#readme",
+  "description": "",
   "dependencies": {
-    "@nextui-org/react": "^2.4.6",
-    "framer-motion": "^11.3.28",
-    "next": "14.2.5",
-    "react": "^18",
-    "react-dom": "^18",
-    "react-icons": "^5.3.0",
-    "svix": "^1.30.0"
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.1.0",
+    "express-validator": "^7.2.1",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.18.1"
   },
   "devDependencies": {
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.5",
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1",
-    "typescript": "^5"
+    "@types/bcryptjs": "^2.4.6",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/jsonwebtoken": "^9.0.10",
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
   }
 }
