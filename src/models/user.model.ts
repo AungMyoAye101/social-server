@@ -6,6 +6,7 @@ export interface IUser extends Document {
     password: string,
     avatar?: { url: string, public_id: string }
     bio?: string,
+    role: 'admin' | "user",
     posts: mongoose.Types.ObjectId[],
     followers: mongoose.Types.ObjectId[],
     following: mongoose.Types.ObjectId[]
@@ -33,6 +34,7 @@ const userSchema = new mongoose.Schema<IUser>({
         url: String,
         public_id: String
     },
+    role: { type: String, default: "user" },
     posts: [{ type: mongoose.Types.ObjectId, ref: "post" }],
     followers: [{ type: mongoose.Types.ObjectId, ref: "User" }],
     following: [{ type: mongoose.Types.ObjectId, ref: "User" }]
