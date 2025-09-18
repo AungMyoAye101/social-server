@@ -24,3 +24,27 @@ export const register = async (req: Request, res: Response) => {
         return res.status(500).json({ message: 'Internal server error!' })
     }
 }
+
+//login
+export const login = async (req: Request, res: Response) => {
+    const { username, email, password } = req.body
+
+    try {
+        const userExit = await User.findOne({ $or: [{ username }, { email }] })
+        if (!userExit) {
+            return res.status(400).json({ message: 'No user found!' })
+        }
+
+        const compared_password = await bcrypt.compare(userExit.password, password)
+        if (!compared_password) {
+            return res.status(400).json({ message: 'Incorrect password!' })
+        }
+
+        jwt.sign({ userId: userExit._id, role: userExit.role }, process.env.JWT_SECRET_KEY as string, { expiresIn: "24h" })
+
+        return res.status(200).json({ message: 'Login successfull.', user: userExit })
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({ message: 'Internal server error!' })
+    }
+}
