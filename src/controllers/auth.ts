@@ -3,6 +3,29 @@ import bcrypt from "bcryptjs"
 import mongoose from "mongoose";
 import { Request, Response } from "express";
 import User from "../models/user.model";
+import { JwtPayload, TokenGenerated } from "../types";
+import { generateToken } from "../utils/jwt";
+
+
+const setCookiesTokens = async (res: Response, tokens: TokenGenerated) => {
+    const isProduction = process.env.NODE_ENV === "production" //for cookies security
+
+    //for short live
+    res.cookie("access_token", tokens.access_token, {
+        httpOnly: true,
+        maxAge: 15 * 60 * 1000, // for 15 min
+        secure: isProduction,
+        sameSite: isProduction ? "strict" : "lax"
+    })
+
+    //for long live
+    res.cookie("refresh_token", tokens.refresh_token, {
+        httpOnly: true,
+        maxAge: 7 * 24 * 60 * 60 * 1000, // for 7 days
+        secure: isProduction,
+        sameSite: isProduction ? "strict" : "lax"
+    })
+}
 
 export const register = async (req: Request, res: Response) => {
     const { username, email, password } = req.body
@@ -11,19 +34,17 @@ export const register = async (req: Request, res: Response) => {
         if (userExit) {
             return res.status(400).json({ message: "Username or Email already exit!" })
         }
-        const hashed_password = await bcrypt.hash(password, 10)
-        const newUser = await User.create({ password: hashed_password, username, email })
+        const hashed_password = await bcrypt.hash(password, 12)
+        const user = new User({ password: hashed_password, username, email })
 
-        const token = jwt.sign({ userId: newUser._id, role: newUser.role }, process.env.JWT_SECRET_KEY as string, {
-            expiresIn: '24h'
+        const tokens = generateToken({
+            userId: user._id.toString(),
+            email: user.email,
         })
-        res.cookie("access_token", token, {
-            httpOnly: true,
-            maxAge: 1 * 24 * 60 * 60 * 1000, //24 hour
-            secure: process.env.NODE_ENV === "production",
-            sameSite: process.env.NODE_ENV === "production" ? "lax" : "none"
-        })
-        return res.status(201).json({ message: 'User created successful.', user: newUser })
+        setCookiesTokens(res, tokens)
+        user.refreshToken = tokens.refresh_token
+        await user.save()
+        return res.status(201).json({ message: 'User created successful.', user })
     } catch (error) {
         console.log(error)
         return res.status(500).json({ message: 'Internal server error!' })
@@ -32,28 +53,27 @@ export const register = async (req: Request, res: Response) => {
 
 //login
 export const login = async (req: Request, res: Response) => {
-    const { username, email, password } = req.body
+    const { email, password } = req.body
+    console.log(password)
 
     try {
-        const userExit = await User.findOne({ $or: [{ username }, { email }] })
-        console.log(userExit)
-        if (!userExit) {
-            return res.status(400).json({ message: 'No user found!' })
+        const user = await User.findOne({ email })
+        console.log(user)
+        if (!user) {
+            return res.status(404).json({ message: 'No user found!' })
         }
 
-        const compared_password = await bcrypt.compare(userExit.password, password)
+        const compared_password = await bcrypt.compare(password, user.password)
+        console.log(compared_password)
         if (!compared_password) {
             return res.status(400).json({ message: 'Incorrect password!' })
         }
+        // generate jwt token for both access and refresh
+        const tokens = generateToken({ userId: user._id.toString(), email: user.email })
 
-        const token = jwt.sign({ userId: userExit._id, role: userExit.role }, process.env.JWT_SECRET_KEY as string, { expiresIn: "24h" })
-        res.cookie("access_token", token, {
-            httpOnly: true,
-            maxAge: 1 * 24 * 60 * 60 * 1000, //24 hour
-            secure: process.env.NODE_ENV === "production",
-            sameSite: process.env.NODE_ENV === "production" ? "lax" : "none"
-        })
-        return res.status(200).json({ message: 'Login successfull.', user: userExit })
+        //set cookies
+        setCookiesTokens(res, tokens)
+        return res.status(200).json({ message: 'Login successfull.', user })
     } catch (error) {
         console.log(error)
         return res.status(500).json({ message: 'Internal server error!' })
@@ -63,6 +83,7 @@ export const login = async (req: Request, res: Response) => {
 export const logout = async (req: Request, res: Response) => {
     try {
         res.clearCookie("access_token")
+        res.clearCookie("refresh_token")
         return res.status(200).json({ message: 'User logout' })
     } catch (error) {
         console.log(error)
