@@ -5,6 +5,7 @@ import dotenv from "dotenv"
 import cookieParser from "cookie-parser"
 import authRouter from "./routes/auth.route"
 import cors from "cors"
+import { connectToDb } from "./config/connectToDb"
 dotenv.config()
 
 const port = process.env.PORT || 5000
@@ -16,7 +17,7 @@ app.use(cookieParser())
 app.use(cors({
     credentials: true
 }))
-
+connectToDb()
 app.use('/api/v1/auth', authRouter)
 app.get('/', (req: Request, res: Response) => {
     res.send("sever is running..")

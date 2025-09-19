@@ -17,7 +17,7 @@ export const register = async (req: Request, res: Response) => {
         const token = jwt.sign({ userId: newUser._id, role: newUser.role }, process.env.JWT_SECRET_KEY as string, {
             expiresIn: '24h'
         })
-        res.cookie("acess_token", token, {
+        res.cookie("access_token", token, {
             httpOnly: true,
             maxAge: 1 * 24 * 60 * 60 * 1000, //24 hour
             secure: process.env.NODE_ENV === "production",
@@ -36,6 +36,7 @@ export const login = async (req: Request, res: Response) => {
 
     try {
         const userExit = await User.findOne({ $or: [{ username }, { email }] })
+        console.log(userExit)
         if (!userExit) {
             return res.status(400).json({ message: 'No user found!' })
         }
@@ -46,7 +47,7 @@ export const login = async (req: Request, res: Response) => {
         }
 
         const token = jwt.sign({ userId: userExit._id, role: userExit.role }, process.env.JWT_SECRET_KEY as string, { expiresIn: "24h" })
-        res.cookie("acess_token", token, {
+        res.cookie("access_token", token, {
             httpOnly: true,
             maxAge: 1 * 24 * 60 * 60 * 1000, //24 hour
             secure: process.env.NODE_ENV === "production",
