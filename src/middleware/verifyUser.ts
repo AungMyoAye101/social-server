@@ -1,21 +1,29 @@
-import { Request, Response, NextFunction } from "express"
+import { Request, Response, NextFunction, RequestHandler } from "express"
 import { AuthRequest } from "../types"
 import { decodedToken, verifyAccessToken } from "../utils/jwt"
-export const verifyUser = async (req: AuthRequest, res: Response, next: NextFunction) => {
-    const { access_token } = req.cookie
-    if (!access_token) {
-        return res.status(400).json({ message: "Your are nor authorized!" })
-    }
+import User from "../models/user.model"
+
+
+export const verifyUser = async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
     try {
 
-        const verifyToken = verifyAccessToken(access_token)
-        const decoded = decodedToken(access_token)
-        req.user = decoded
-        console.log(decoded)
+        const { access_token } = req.cookies
+        if (!access_token) {
+            res.status(400).json({ message: "Your are nor authorized!" })
+            return;
+        }
+        const decoded = verifyAccessToken(access_token)
+        const user = await User.findById(decoded.userId)
+        if (user) {
+
+            req.user = decoded
+        }
+        console.log(" in middleware")
         next()
     } catch (error) {
         console.log(error)
-        return res.status(500).json({ message: "Internal server error" })
+        res.status(500).json({ message: "Internal server error" })
     }
 
 }
+

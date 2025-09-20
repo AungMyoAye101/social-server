@@ -9,8 +9,8 @@ export interface TokenGenerated {
 }
 
 export interface AuthRequest extends Request {
-    user: JwtPayload,
-    cookie: {
+    user?: JwtPayload,
+    cookies: {
         access_token?: string,
         refresh_token?: string,
     }
