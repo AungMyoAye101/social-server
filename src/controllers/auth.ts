@@ -3,7 +3,7 @@ import bcrypt from "bcryptjs"
 import mongoose from "mongoose";
 import { Request, Response } from "express";
 import User from "../models/user.model";
-import { JwtPayload, TokenGenerated } from "../types";
+import { AuthRequest, JwtPayload, TokenGenerated } from "../types";
 import { generateToken } from "../utils/jwt";
 
 
@@ -54,17 +54,15 @@ export const register = async (req: Request, res: Response) => {
 //login
 export const login = async (req: Request, res: Response) => {
     const { email, password } = req.body
-    console.log(password)
-
     try {
         const user = await User.findOne({ email })
-        console.log(user)
+
         if (!user) {
             return res.status(404).json({ message: 'No user found!' })
         }
 
         const compared_password = await bcrypt.compare(password, user.password)
-        console.log(compared_password)
+
         if (!compared_password) {
             return res.status(400).json({ message: 'Incorrect password!' })
         }
@@ -73,7 +71,7 @@ export const login = async (req: Request, res: Response) => {
 
         //set cookies
         setCookiesTokens(res, tokens)
-        return res.status(200).json({ message: 'Login successfull.', user })
+        return res.status(200).json({ message: 'Login success.', user })
     } catch (error) {
         console.log(error)
         return res.status(500).json({ message: 'Internal server error!' })
@@ -90,4 +88,15 @@ export const logout = async (req: Request, res: Response) => {
         return res.status(500).json({ message: 'Internal server error!' })
     }
 
+}
+
+export const me = async (req: AuthRequest, res: Response) => {
+    const { userId } = req.user as JwtPayload
+    if (!userId) return
+    try {
+        const user = await User.findById(userId).select("-password")
+        return res.status(200).json({ message: 'user authenticated.', user })
+    } catch (error) {
+        return res.status(500).json({ message: "Internal server error." })
+    }
 }
