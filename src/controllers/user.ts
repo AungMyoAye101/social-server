@@ -23,18 +23,20 @@ export const getUserById = async (req: Request, res: Response) => {
 //get all user 
 
 export const getAllUsers = async (req: Request, res: Response) => {
-    const { page = 1, limit = 10 } = req.params
+    const { page = 1, limit = 1 } = req.query
 
+    const currpage = Number(page)
+    const limitRate = Number(limit)
     try {
         const total = await User.countDocuments()
-        const totalPages = Math.floor(total / Number(limit))
-        const skip = (Number(page) - 1) * Number(limit)
-        const hasNextPage = Number(page) <= totalPages
-        const hasPrevPage = Number(page) >= 1
+        const totalPages = Math.ceil(total / limitRate)
+        const skip = (currpage - 1) * limitRate
+        const hasNextPage = currpage < totalPages
+        const hasPrevPage = currpage > 1
 
         const users = await User.find().select("-password").skip(skip).limit(Number(limit)).sort({ createdAt: -1 })
 
-        return res.status(200).json({ message: "success", users, hasNextPage, hasPrevPage, totalPages })
+        return res.status(200).json({ message: "success", users, pagination: { page: currpage, hasNextPage, hasPrevPage, totalPages } })
 
     } catch (error) {
         return res.status(500).json({ message: "Internal server error." })
