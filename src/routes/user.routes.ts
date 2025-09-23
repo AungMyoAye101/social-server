@@ -7,7 +7,7 @@ const userRouter = express.Router()
 userRouter.get("/allusers", getAllUsers) //get all user and pagination
 userRouter.get('/:userId', getUserById) //get user by id 
 userRouter.put('/', verifyUser, updateUser)
-userRouter.post("/follow/:id", verifyUser, toFollow)
-userRouter.post("/unfollow/:id", verifyUser, unFollowUser)
+userRouter.post("/follow/:id", verifyUser, toFollow) //follow user
+userRouter.post("/unfollow/:id", verifyUser, unFollowUser) //unfollow user
 
 export default userRouter

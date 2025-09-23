@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser"
 import authRouter from "./routes/auth.route"
 import cors from "cors"
 import userRouter from "./routes/user.routes"
+import postRouter from "./routes/post.route"
 
 dotenv.config()
 const app = express()
@@ -18,6 +19,8 @@ app.use(cors({
 
 app.use('/api/v1/auth', authRouter) //authentication
 app.use('/api/v1/user', userRouter) //get users
+
+app.use('/api/v1/post', postRouter) // CRUD & get post
 app.get('/', (req: Request, res: Response) => {
     res.send("sever is running..")
 })
