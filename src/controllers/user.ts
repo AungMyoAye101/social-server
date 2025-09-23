@@ -52,7 +52,6 @@ export const updateUser = async (req: AuthRequest, res: Response) => {
         return res.status(400).json({ message: "Invalid userId!" })
     }
 
-
     try {
         const user = await User.findByIdAndUpdate(userId, req.body, { new: true }).select('-password')
 
