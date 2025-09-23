@@ -45,8 +45,8 @@ export const getAllUsers = async (req: Request, res: Response) => {
     }
 }
 
-export const updateUser = async (req: Request, res: Response) => {
-    const { userId } = req.params
+export const updateUser = async (req: AuthRequest, res: Response) => {
+    const { userId } = req.user as JwtPayload
 
     if (!mongoose.Types.ObjectId.isValid(userId)) {
         return res.status(400).json({ message: "Invalid userId!" })
@@ -101,19 +101,23 @@ export const unFollowUser = async (req: AuthRequest, res: Response) => {
     if (!mongoose.Types.ObjectId.isValid(id)) {
         return res.status(400).json({ message: "Invalid userId!" })
     }
-    if (userId == - id) {
+    if (userId === id) {
         return res.status(400).json({ message: "You can't unfollow yourself." })
     }
     try {
-        const user = await User.findOne({ _id: id })
+        const user = await User.findById(id)
+
         if (!user) {
             return res.status(404).json({ message: "User not found." })
         }
+        console.log("finded usesr")
         if (!user.followers.includes(userId)) {
             return res.status(400).json({ message: "You are not following user" })
         }
-        await User.findByIdAndUpdate(id, { $pull: { follower: userId } }, { new: true })
+        await User.findByIdAndUpdate(id, { $pull: { followers: userId } }, { new: true })
+        console.log("pull user id from follower ")
         await User.findByIdAndUpdate(userId, { $pull: { following: id } }, { new: true })
+        console.log("pull user id from followeing ")
         return res.status(200).json({ mesage: 'unFlowing success' })
     } catch (error) {
         console.warn(error)
