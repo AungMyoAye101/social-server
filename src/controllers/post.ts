@@ -106,6 +106,8 @@ export const postDetail = async (req: Request, res: Response) => {
     }
 }
 
+
+//like or unlike feature
 export const toggleLike = async (req: AuthRequest, res: Response) => {
     const { postId } = req.params
     const { userId } = req.user as JwtPayload
@@ -124,6 +126,41 @@ export const toggleLike = async (req: AuthRequest, res: Response) => {
         return res.status(200).json({ message: "success", likes: isLiked })
     } catch (error) {
         console.warn(error)
+        return res.status(500).json({ message: "Internal server error." })
+    }
+}
+
+//share feature 
+
+export const share_post = async (req: AuthRequest, res: Response) => {
+    const { userId } = req.user as JwtPayload
+    const { postId } = req.params
+
+    try {
+        const post = await Post.findByIdAndUpdate(postId, { $addToSet: { share: userId } }).lean().select("share")
+        if (!post) {
+            return res.status(404).json({ message: "Post not found." })
+        }
+        return res.status(200).json({ message: "Post has shared." })
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({ message: "Internal server error." })
+    }
+}
+
+//remove share post 
+export const unshare_post = async (req: AuthRequest, res: Response) => {
+    const { userId } = req.user as JwtPayload
+    const { postId } = req.params
+
+    try {
+        const post = await Post.findByIdAndUpdate(postId, { $pull: { share: userId } }).lean().select("share")
+        if (!post) {
+            return res.status(404).json({ message: "Post not found." })
+        }
+        return res.status(200).json({ message: "Post unshared successfully." })
+    } catch (error) {
+        console.log(error)
         return res.status(500).json({ message: "Internal server error." })
     }
 }
