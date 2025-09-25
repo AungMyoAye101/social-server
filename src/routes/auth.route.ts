@@ -1,14 +1,14 @@
 import express from "express"
 import { login, logout, me, register } from "../controllers/auth"
 import { verifyUser } from "../middleware/verifyUser"
-import { Request, Response } from "express"
-import { AuthRequest, JwtPayload } from "../types"
-import User from "../models/user.model"
+
+import { loginValidator, signupValidator } from "../config/validator"
+
 const authRouter = express.Router()
 
-authRouter.post("/register", register)
+authRouter.post("/register", signupValidator, register)
 
-authRouter.post("/login", login)
+authRouter.post("/login", loginValidator, login)
 
 authRouter.post("/logout", logout)
 

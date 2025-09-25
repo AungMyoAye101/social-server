@@ -3,8 +3,13 @@ import { AuthRequest, JwtPayload } from "../types";
 import Post from "../models/post.model";
 import mongoose, { isValidObjectId, Mongoose } from "mongoose";
 import User from "../models/user.model";
+import { validationResult } from "express-validator";
 
 export const create_post = async (req: AuthRequest, res: Response) => {
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() })
+    }
     const { content } = req.body
     const { userId } = req.user as JwtPayload // get from middleware
     try {

@@ -5,6 +5,7 @@ import { Request, Response } from "express";
 import User from "../models/user.model";
 import { AuthRequest, JwtPayload, TokenGenerated } from "../types";
 import { generateToken } from "../utils/jwt";
+import { validationResult } from "express-validator";
 
 
 const setCookiesTokens = async (res: Response, tokens: TokenGenerated) => {
@@ -28,6 +29,10 @@ const setCookiesTokens = async (res: Response, tokens: TokenGenerated) => {
 }
 
 export const register = async (req: Request, res: Response) => {
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() })
+    }
     const { username, email, password } = req.body
     try {
         const userExit = await User.findOne({ $or: [{ email }, { username }] })
@@ -53,6 +58,10 @@ export const register = async (req: Request, res: Response) => {
 
 //login
 export const login = async (req: Request, res: Response) => {
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() })
+    }
     const { email, password } = req.body
     try {
         const user = await User.findOne({ email })
@@ -71,7 +80,7 @@ export const login = async (req: Request, res: Response) => {
 
         //set cookies
         setCookiesTokens(res, tokens)
-        return res.status(200).json({ message: 'Login success.', user })
+        return res.status(200).json({ message: 'Login success.', results: { token: tokens.access_token } })
     } catch (error) {
         console.log(error)
         return res.status(500).json({ message: 'Internal server error!' })
