@@ -33,14 +33,14 @@ export const register = async (req: Request, res: Response) => {
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() })
     }
-    const { username, email, password } = req.body
+    const { name, email, password } = req.body
     try {
-        const userExit = await User.findOne({ $or: [{ email }, { username }] })
+        const userExit = await User.findOne({ $or: [{ email }, { name }] })
         if (userExit) {
             return res.status(400).json({ message: "Username or Email already exit!" })
         }
         const hashed_password = await bcrypt.hash(password, 12)
-        const user = new User({ password: hashed_password, username, email })
+        const user = new User({ password: hashed_password, name, email })
 
         const tokens = generateToken({
             userId: user._id.toString(),

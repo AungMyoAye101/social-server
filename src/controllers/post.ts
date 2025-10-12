@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { AuthRequest, JwtPayload } from "../types";
 import Post from "../models/post.model";
-import mongoose, { isValidObjectId, Mongoose } from "mongoose";
+import mongoose from "mongoose";
 import User from "../models/user.model";
 import { validationResult } from "express-validator";
 
