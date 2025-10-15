@@ -6,6 +6,7 @@ import User from "../models/user.model";
 import { AuthRequest, JwtPayload, TokenGenerated } from "../types";
 import { generateToken } from "../utils/jwt";
 import { validationResult } from "express-validator";
+import { successResponse } from "../utils/custom-response";
 
 
 const setCookiesTokens = async (res: Response, tokens: TokenGenerated) => {
@@ -49,7 +50,14 @@ export const register = async (req: Request, res: Response) => {
         setCookiesTokens(res, tokens)
         user.refreshToken = tokens.refresh_token
         await user.save()
-        return res.status(201).json({ message: 'User created successful.', user })
+        return successResponse(res, 201, true, "User register successfull",
+            {
+                user: {
+                    _id: user._id,
+                    refreshToken: user.refreshToken
+                }
+            })
+        // return res.status(201).json({ message: 'User created successful.', user })
     } catch (error) {
         console.log(error)
         return res.status(500).json({ message: 'Internal server error!' })
@@ -80,7 +88,8 @@ export const login = async (req: Request, res: Response) => {
 
         //set cookies
         setCookiesTokens(res, tokens)
-        return res.status(200).json({ message: 'Login success.', results: { token: tokens.access_token } })
+        return successResponse(res, 200, true, "Login success", { token: tokens.access_token })
+
     } catch (error) {
         console.log(error)
         return res.status(500).json({ message: 'Internal server error!' })

@@ -1,4 +1,4 @@
-import { Request } from "express"
+import { Request, Response } from "express"
 
 export interface JwtPayload {
     userId: string,
@@ -14,4 +14,21 @@ export interface AuthRequest extends Request {
         access_token?: string,
         refresh_token?: string,
     }
+}
+
+export type successResponseType = {
+
+    res: Response,
+    statusCode: number,
+    success: boolean,
+    result: any,
+    message: string,
+    pagination?: pagination
+}
+export type pagination = {
+    total: number,
+    currentPage: number,
+    hasNextPage: boolean,
+    hasPrevPage: boolean,
+    limit: number
 }

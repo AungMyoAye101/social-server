@@ -10,6 +10,7 @@ import postRouter from "./routes/post.route"
 dotenv.config()
 const app = express()
 
+//All middleware go here
 app.use(express.json())
 app.use(express.urlencoded())
 app.use(cookieParser())
@@ -20,11 +21,14 @@ app.use(cors({
     credentials: true
 }))
 
+// All Routes go here
 app.use('/api/v1/auth', authRouter) //authentication
 app.use('/api/v1/user', userRouter) //get users
 
 app.use('/api/v1/post', postRouter) // CRUD & get post
-app.get('/', (req: Request, res: Response) => {
+
+
+app.get('/', (_req: Request, res: Response) => {
     res.send("sever is running..")
 })
 
