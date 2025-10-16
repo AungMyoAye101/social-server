@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 import { Request, Response } from "express";
 import User from "../models/user.model";
 import { AuthRequest, JwtPayload, TokenGenerated } from "../types";
-import { generateToken } from "../utils/jwt";
+import { generateToken, verifyRefreshToken } from "../utils/jwt";
 import { validationResult } from "express-validator";
 import { successResponse } from "../utils/custom-response";
 
@@ -116,5 +116,24 @@ export const me = async (req: AuthRequest, res: Response) => {
         return res.status(200).json({ message: 'user authenticated.', user })
     } catch (error) {
         return res.status(500).json({ message: "Internal server error." })
+    }
+}
+
+//Refresh token 
+export const refreshToken = async (req: Request, res: Response) => {
+    try {
+        const refresh_token = req.cookies.refresh_token;
+        console.log(refresh_token)
+        if (!refresh_token) {
+            return res.status(401).json({ message: "No token." })
+        };
+
+        const decoded = verifyRefreshToken(refresh_token);
+        console.log(decoded);
+        const tokens = generateToken(decoded)
+
+        return successResponse(res, 200, true, "Generated new tokens successfull.", { token: tokens.access_token })
+    } catch (error) {
+        return res.status(403).json({ message: "Invalid refresh token" })
     }
 }

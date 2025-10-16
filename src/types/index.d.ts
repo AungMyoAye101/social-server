@@ -1,4 +1,13 @@
 import { Request, Response } from "express"
+import "express"
+
+declare global {
+    namespace Express {
+        interface Request {
+            user?: JwtPayload
+        }
+    }
+}
 
 export interface JwtPayload {
     userId: string,

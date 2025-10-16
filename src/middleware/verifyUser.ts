@@ -18,7 +18,6 @@ export const verifyUser = async (req: AuthRequest, res: Response, next: NextFunc
 
             req.user = decoded
         }
-        console.log(" in middleware")
         next()
     } catch (error) {
         console.log(error)
@@ -26,4 +25,6 @@ export const verifyUser = async (req: AuthRequest, res: Response, next: NextFunc
     }
 
 }
+
+
 
