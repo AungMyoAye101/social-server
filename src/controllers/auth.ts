@@ -122,16 +122,16 @@ export const me = async (req: AuthRequest, res: Response) => {
 //Refresh token 
 export const refreshToken = async (req: Request, res: Response) => {
     try {
+        console.log("Cookies", req.cookies)
         const refresh_token = req.cookies.refresh_token;
         console.log(refresh_token)
         if (!refresh_token) {
             return res.status(401).json({ message: "No token." })
         };
 
-        const decoded = verifyRefreshToken(refresh_token);
-        console.log(decoded);
-        const tokens = generateToken(decoded)
-
+        const { userId, email } = verifyRefreshToken(refresh_token);
+        const tokens = generateToken({ userId, email })
+        console.log("generated", tokens)
         return successResponse(res, 200, true, "Generated new tokens successfull.", { token: tokens.access_token })
     } catch (error) {
         return res.status(403).json({ message: "Invalid refresh token" })
