@@ -12,7 +12,7 @@ import { successResponse } from "../utils/custom-response";
 const setCookiesTokens = async (res: Response, tokens: TokenGenerated) => {
     const isProduction = process.env.NODE_ENV === "production" //for cookies security
 
-    //for short live
+    // for short live
     res.cookie("access_token", tokens.access_token, {
         httpOnly: true,
         maxAge: 15 * 60 * 1000, // for 15 min
@@ -54,10 +54,10 @@ export const register = async (req: Request, res: Response) => {
             {
                 user: {
                     _id: user._id,
-                    refreshToken: user.refreshToken
-                }
+                    email: user.email
+                },
+                access_token: tokens.access_token
             })
-        // return res.status(201).json({ message: 'User created successful.', user })
     } catch (error) {
         console.log(error)
         return res.status(500).json({ message: 'Internal server error!' })
@@ -122,9 +122,8 @@ export const me = async (req: AuthRequest, res: Response) => {
 //Refresh token 
 export const refreshToken = async (req: Request, res: Response) => {
     try {
-        console.log("Cookies", req.cookies)
+
         const refresh_token = req.cookies.refresh_token;
-        console.log(refresh_token)
         if (!refresh_token) {
             return res.status(401).json({ message: "No token." })
         };

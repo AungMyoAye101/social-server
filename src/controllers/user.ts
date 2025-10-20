@@ -25,10 +25,11 @@ export const getUserById = async (req: Request, res: Response) => {
 //get all user 
 
 export const getAllUsers = async (req: Request, res: Response) => {
-    const { page = 1, limit = 1 } = req.query
+    const { page = 1, limit = 10 } = req.query
 
     const currpage = Number(page)
     const limitRate = Number(limit)
+    console.log("get all user")
     try {
         const total = await User.countDocuments()
         const totalPages = Math.ceil(total / limitRate)
