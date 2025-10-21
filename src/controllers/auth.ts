@@ -1,55 +1,27 @@
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs"
 import mongoose from "mongoose";
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import User from "../models/user.model";
 import { AuthRequest, JwtPayload, TokenGenerated } from "../types";
-import { generateToken, verifyRefreshToken } from "../utils/jwt";
+import { generateToken, setCookiesTokens, verifyRefreshToken } from "../utils/jwt";
 import { validationResult } from "express-validator";
 import { successResponse } from "../utils/custom-response";
+import { NotFoundError } from "../common/error";
+import { registerService } from "../service/auth.service";
 
 
-const setCookiesTokens = async (res: Response, tokens: TokenGenerated) => {
-    const isProduction = process.env.NODE_ENV === "production" //for cookies security
 
-    // for short live
-    res.cookie("access_token", tokens.access_token, {
-        httpOnly: true,
-        maxAge: 15 * 60 * 1000, // for 15 min
-        secure: isProduction,
-        sameSite: isProduction ? "strict" : "lax"
-    })
 
-    //for long live
-    res.cookie("refresh_token", tokens.refresh_token, {
-        httpOnly: true,
-        maxAge: 7 * 24 * 60 * 60 * 1000, // for 7 days
-        secure: isProduction,
-        sameSite: isProduction ? "strict" : "lax"
-    })
-}
-
-export const register = async (req: Request, res: Response) => {
-    const errors = validationResult(req)
-    if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() })
-    }
-    const { name, email, password } = req.body
+export const register = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const userExit = await User.findOne({ $or: [{ email }, { name }] })
-        if (userExit) {
-            return res.status(400).json({ message: "Username or Email already exit!" })
+        const errors = validationResult(req)
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() })
         }
-        const hashed_password = await bcrypt.hash(password, 12)
-        const user = new User({ password: hashed_password, name, email })
-
-        const tokens = generateToken({
-            userId: user._id.toString(),
-            email: user.email,
-        })
+        const { user, tokens } = await registerService(req.body)
         setCookiesTokens(res, tokens)
-        user.refreshToken = tokens.refresh_token
-        await user.save()
+
         return successResponse(res, 201, true, "User register successfull",
             {
                 user: {
@@ -59,8 +31,7 @@ export const register = async (req: Request, res: Response) => {
                 access_token: tokens.access_token
             })
     } catch (error) {
-        console.log(error)
-        return res.status(500).json({ message: 'Internal server error!' })
+        return next(error)
     }
 }
 
@@ -75,7 +46,7 @@ export const login = async (req: Request, res: Response) => {
         const user = await User.findOne({ email })
 
         if (!user) {
-            return res.status(404).json({ message: 'No user found!' })
+            throw new NotFoundError("User not found.")
         }
 
         const compared_password = await bcrypt.compare(password, user.password)
